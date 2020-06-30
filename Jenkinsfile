@@ -5,7 +5,7 @@ node {
         }
 
         stage('Fargate Task call') {
-                sh 'curl -s -k -u ci2:P@ssw0rd https://tr01.westus.cloudapp.azure.com/api/v1/defenders/fargate.json?consoleaddr=https://tr01.westus.cloudapp.azure.com -X POST -H "Content-Type:application/json" --data-binary "@fargate.json" | jq . > fargateAWS.json'
+                sh 'curl --progress-bar -L -k --header "authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYWRtaW4iLCJyb2xlIjoiYWRtaW4iLCJncm91cHMiOm51bGwsInNlc3Npb25UaW1lb3V0U2VjIjoxODAwLCJleHAiOjE1OTM0OTU4NjAsImlzcyI6InR3aXN0bG9jayJ9.Y5YSVq5Seic1731Qj2tptA0eVraTeXIszekrjDNG_SI" https://tr01.westus.cloudapp.azure.com/api/v1/defenders/fargate.json?consoleaddr=https://tr01.westus.cloudapp.azure.com -X POST -H "Content-Type:application/json" --data-binary "@fargate.json" | jq . > fargateAWS.json'
                 sh 'cat fargateAWS.json'
         }
 
